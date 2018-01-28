@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
     , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
-    , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")
+    , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.hashedPassword = :password")
     , @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo")})
 public class Usuario implements Serializable {
 
@@ -47,7 +48,12 @@ public class Usuario implements Serializable {
     private String nombre;
     @Size(max = 45)
     @Column(name = "password")
-    private String password;
+    private String hashedPassword;
+    @Transient
+    private String password;    
+    @Size(max = 100)
+    @Column(name = "salt")
+    private String salt;
     @Basic(optional = false)
     @NotNull
     @Column(name = "activo")
@@ -84,12 +90,12 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     public boolean getActivo() {
@@ -107,6 +113,22 @@ public class Usuario implements Serializable {
     public void setTipoUsuarioid(Tipousuario tipoUsuarioid) {
         this.tipoUsuarioid = tipoUsuarioid;
     }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }   
 
     @Override
     public int hashCode() {

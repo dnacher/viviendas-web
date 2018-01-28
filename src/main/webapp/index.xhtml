@@ -5,10 +5,72 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Vivienda</title>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>       
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="index.css"/>
     </h:head>
-    <h:body>
-        <p:outputLabel value="test"/>
-        <div class="col-md-6 col-md-offset-3"></div>        
+    <h:body id="login" class="font-cover2">
+        <p:outputPanel class="container-login center-align">
+            <p:outputPanel styleClass="margin:15px 0;">
+                <p:graphicImage class="logo-image" value="resources/img/mainlogo.png" />
+                <p>Inicia sesión con tu cuenta</p>   
+            </p:outputPanel>
+            <h:form>
+                <p:outputPanel styleClass="input-field">
+                    <p:inputText style="color: white" id="txtUserName" value="#{indexMB.txtuser}" required="true"/>
+                    <p:outputLabel for="txtUserName">Usuario</p:outputLabel>
+                </p:outputPanel>
+                <p:outputPanel styleClass="input-field">
+                    <p:password style="color: white" id="txtPassword" value="#{indexMB.txtPassword}" required="true"/>
+                    <p:outputLabel for="txtPassword">Contraseña</p:outputLabel>
+                </p:outputPanel>
+                <p:commandButton styleClass="waves-effect waves-light btn" value="Ingresar" action="#{indexMB.login()}"/>
+            </h:form>
+            <p:outputPanel style="margin: 20px 0;"></p:outputPanel>
+            <a href="home.html">Crear cuenta</a>
+        </p:outputPanel>
+
+        
+        
+        
+        
+        
+        
+        <!--                                   -->
+        <!--                                   -->
+        <!--              Scripts              -->
+        <!--                                   -->
+        <!--                                   -->    
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <!-- Sweet Alert JS -->
+        <script src="js/sweetalert.min.js"></script>    
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	
+        <!-- Materialize JS -->
+        <script src="js/materialize.min.js"></script>    
+        <!-- Malihu jQuery custom content scroller JS -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>    
+        <!-- MaterialDark JS -->
+        <script src="js/main.js"></script>
+        <!--        <p:outputPanel >
+                    <h:form id="cuadro">
+                        <p:messages autoUpdate="true" showDetail="true"/>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="txtUser" value="Usuario"/>
+                            <p:inputText id="txtUser" value="" required=""/>
+        
+                            <p:outputLabel for="txtPassword" value="Password"/>
+                            <p:password id="txtPassword" value="" required=""/>
+                            <h:column/>
+                            <p:commandButton value="Login" styleClass="button-login"/> 
+                        </h:panelGrid>                          
+                    </h:form>        
+                </p:outputPanel>-->
     </h:body>
 </html>
 

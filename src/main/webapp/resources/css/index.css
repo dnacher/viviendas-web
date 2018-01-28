@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27-ene-2018, 12:19:21
+    Author     : Nacher
+*/
+
+#principal {
+    width: 800px;
+    margin: 0 auto;    
+}
+
+#cuadro {
+    margin-left: 30%;
+    margin-top: 30%;   
+    width: 40%;
+    height: 40%
+}
+
+.button-login {
+   margin-left: 20%;
+   margin-top: 5%;
+}
+
