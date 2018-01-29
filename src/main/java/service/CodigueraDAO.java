@@ -41,9 +41,9 @@ public class CodigueraDAO<T> implements Serializable {
         }
     }
 
-    public List<T> obtenerHabilitados() throws Exception {
+    public List<T> obtenerActivos() throws Exception {
         try {
-            String consulta = clazz.getSimpleName() + ".findHabilitados";
+            String consulta = clazz.getSimpleName() + ".findByActivo";
             Logger.getLogger(this.getClass().getName()).log(Level.INFO, " parametrized type " + consulta);
             return em.createNamedQuery(consulta).getResultList();
         } catch (Exception ex) {
