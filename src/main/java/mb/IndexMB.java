@@ -6,6 +6,7 @@
 package mb;
 
 import Constantes.Constantes;
+import Mensajes.Mensajes;
 import entities.Usuario;
 import java.io.Serializable;
 import javax.enterprise.context.ApplicationScoped;
@@ -15,6 +16,10 @@ import javax.inject.Named;
 import security.Security;
 import service.UsuarioSessionBean;
 import org.jboss.logging.Logger;
+import utils.JSFUtils;
+import java.util.Locale;
+import javax.faces.context.FacesContext;
+import service.UsuarioFacadeLocal;
 
 /**
  *
@@ -27,9 +32,13 @@ public class IndexMB implements Serializable {
 
     private String txtuser;
     private String txtPassword;
+    private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
     
     @Inject
     UsuarioSessionBean usb;
+    
+    @Inject
+    UsuarioFacadeLocal ufl;
 
     public void login() {
         validationLogin();
@@ -43,22 +52,17 @@ public class IndexMB implements Serializable {
         } else {
             try {                
                 Usuario usu=usb.traerUsuarioXNombre(txtuser);
-//                Viviendas.user = ub.traerUsuarioXNombre(nombre);
                 if (usu != null) {
                     usu.setPassword(txtPassword);
                     if (usu.getNombre().equals(txtuser) && Security.verifyPassword(usu)) {
-//                        ub = new UsuariosBean();
-//                        Viviendas.listaPermisos = ub.TraePermisos(Viviendas.getTipoUsuario());
-//                        ConfiguracionBean cb = new ConfiguracionBean();
-//                        listaConfiguracion = cb.traerTodos();
-                        System.out.println("correcto");
+                        JSFUtils.agregarInfo(null, Mensajes.LOGIN_CORRECTO, "");                        
                         return 0;
                     } else {
-                        System.out.println("Error");
+                        JSFUtils.agregarInfo(null, Mensajes.LOGIN_ERROR, ""); 
                         return -1;
                     }
                 } else {
-                    System.out.println("Error");
+                    JSFUtils.agregarInfo(null, Mensajes.LOGIN_ERROR, ""); 
                         return -1;
                 }
             } catch (Exception ex) {
