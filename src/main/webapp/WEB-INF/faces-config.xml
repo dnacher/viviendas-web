@@ -15,7 +15,7 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>MAIN</from-outcome>
-            <to-view-id>/paginasPrivadas/loginCliente.jsf</to-view-id>
+            <to-view-id>faces/main.xhtml</to-view-id>
             <redirect/>
         </navigation-case>       
     </navigation-rule>

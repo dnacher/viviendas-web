@@ -9,6 +9,8 @@ import Constantes.Constantes;
 import Mensajes.Mensajes;
 import entities.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
@@ -33,16 +35,26 @@ public class IndexMB implements Serializable {
     private String txtuser;
     private String txtPassword;
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    private List<String> test = new ArrayList<>();
     
     @Inject
     UsuarioSessionBean usb;
     
     @Inject
     UsuarioFacadeLocal ufl;
+    
+    public void init(){
+        test.add("test1");
+        test.add("test2");
+        test.add("test3");
+        test.add("test4");
+        test.add("test5");
+    }
 
     public void login() {
         validationLogin();
     }
+    
 
     public int validationLogin() {
         if (txtuser == null || txtuser.isEmpty()) {
@@ -51,7 +63,7 @@ public class IndexMB implements Serializable {
             return Constantes.ERROR_FALTA_PASS;
         } else {
             try {                
-                Usuario usu=usb.traerUsuarioXNombre(txtuser);
+                Usuario usu=ufl.traerUsuarioXNombre(txtuser);
                 if (usu != null) {
                     usu.setPassword(txtPassword);
                     if (usu.getNombre().equals(txtuser) && Security.verifyPassword(usu)) {
@@ -88,5 +100,15 @@ public class IndexMB implements Serializable {
     public void setTxtPassword(String txtPassword) {
         this.txtPassword = txtPassword;
     }
+
+    public List<String> getTest() {
+        return test;
+    }
+
+    public void setTest(List<String> test) {
+        this.test = test;
+    }
+    
+    
 
 }

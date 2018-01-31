@@ -1,9 +1,56 @@
-<!--?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Vivienda</title>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>       
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="index.css"/>
+    </h:head>
+    <h:body id="login" class="font-cover2">
 
-    <ui:define name="content">
-        <ui:include src=".././paginasPublicas/index.xhtml"/>
-    </ui:define>
-
-</ui:composition>
+        <p:outputPanel class="container-login center-align">
+            <p:outputPanel styleClass="margin:15px 0;">
+                <p:graphicImage class="logo-image" value="resources/img/mainlogo.png" />
+                <p>Inicia sesión con tu cuenta</p>   
+            </p:outputPanel>
+            <h:form>
+                <p:growl id="msgs" showDetail="true" autoUpdate="true" />
+                <p:outputPanel styleClass="input-field">
+                    <p:inputText style="color: white" id="txtUserName" value="#{indexMB.txtuser}" required="true"/>
+                    <p:outputLabel for="txtUserName" value="Usuario"></p:outputLabel>
+                </p:outputPanel>
+                <p:outputPanel styleClass="input-field">
+                    <p:password style="color: white" id="txtPassword" value="#{indexMB.txtPassword}" required="true"/>
+                    <p:outputLabel for="txtPassword" value="Contraseña"></p:outputLabel>
+                </p:outputPanel>
+                <p:commandButton styleClass="waves-effect waves-light btn" value="Ingresar" action="#{indexMB.login()}"/>
+            </h:form>
+            <p:outputPanel style="margin: 20px 0;"></p:outputPanel>
+            <h:link outcome="/paginas-privadas/welcomePrimefaces" value="Primefaces welcome page" />
+        </p:outputPanel>
+        <!--                                   -->
+        <!--                                   -->
+        <!--              Scripts              -->
+        <!--                                   -->
+        <!--                                   -->    
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <!-- Sweet Alert JS -->
+        <script src="js/sweetalert.min.js"></script>    
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	
+        <!-- Materialize JS -->
+        <script src="js/materialize.min.js"></script>    
+        <!-- Malihu jQuery custom content scroller JS -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>    
+        <!-- MaterialDark JS -->
+        <script src="js/main.js"></script>
+    </h:body>
+</html>
