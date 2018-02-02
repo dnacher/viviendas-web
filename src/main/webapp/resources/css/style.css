@@ -315,6 +315,12 @@ body, html{
     background-color: #2B579A;
 }
 
+.font-cover3{      
+    /*background-color: #2B579A;*/
+    color: white;
+    background: #2B579A;
+}
+
 /*///////////////////////// Estilos home.html /////////////////////////*/
 /*====== Tile*/
 .tile,

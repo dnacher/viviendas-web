@@ -9,37 +9,37 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <h:outputStylesheet library="css" name="style.css"/>
+                <title>Main</title>
             </f:facet>
         </h:head>
 
         <h:body>
 
-            <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
+            <p:layout fullPage="true" styleClass="font-conver3">                
+                <p:layoutUnit class="font-cover3" position="north" size="100">
+                    <div class="font-cover3">
+                        Header
+                    </div>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                <p:layoutUnit class="font-cover3" position="south" size="40" closable="true" collapsible="true">
+                    <div class="font-cover3">
+                        Footer
+                    </div>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="250" header="test" collapsible="false">
-                    <p:menu>
-                       
-                            <p:menuitem value="Demo" url="#" />
-                            <p:menuitem value="Documentation" url="#" />
-                            <p:menuitem value="Forum" url="#" />
-                            <p:menuitem value="Themes" url="#" />
-
-                      
-
+                <p:layoutUnit position="west" size="250" collapsible="false" class="font-cover3">
+                    <p:menu class="font-cover3">
+                        <p:menuitem value="Demo" url="#" />
+                        <p:menuitem value="Documentation" url="#" />
+                        <p:menuitem value="Forum" url="#" />
+                        <p:menuitem value="Themes" url="#" />      
                     </p:menu>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                <p:layoutUnit position="center" class="font-cover3">
+                    Body
                 </p:layoutUnit>
 
             </p:layout>
