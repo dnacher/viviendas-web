@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <h:outputStylesheet library="css" name="style.css"/>           
+        </f:facet>
+    </h:head>
+
+    <h:body>      
+        <p:layout fullPage="true">  
+            <p:layoutUnit id="top" position="north" size="100" style="background: #2B579A">               
+                    Header              
+            </p:layoutUnit>
+
+            <p:layoutUnit id="left" position="west" size="250" collapsible="false" class="font-cover3">
+                <p:menu class="font-cover3">
+                    <p:menuitem value="Demo" url="#" />
+                    <p:menuitem value="Documentation" url="#" />
+                    <p:menuitem value="Forum" url="#" />
+                    <p:menuitem value="Themes" url="#" />      
+                </p:menu>
+            </p:layoutUnit>
+
+            <div id="content">
+                <p:layoutUnit position="center">
+                    <p:outputPanel rendered="#{indexMB.verificarSession()}">
+                        <ui:insert name="content">Content</ui:insert>
+                    </p:outputPanel>
+                    <p:outputPanel rendered="#{not indexMB.verificarSession()}">
+                        #{indexMB.sinPermisos()}
+                    </p:outputPanel>    
+                </p:layoutUnit>
+            </div>
+
+            <div id="bottom">
+                <p:layoutUnit class="font-cover3" position="south" size="40" closable="true" collapsible="true">
+                    <div class="font-cover3">
+                        Footer
+                    </div>
+                </p:layoutUnit>
+            </div>
+            
+        </p:layout>
+    </h:body>
+
+</html>
